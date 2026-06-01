@@ -6,6 +6,8 @@ public class PlayerAutoAttack : MonoBehaviour
     public float attackInterval = 1f;
     public int damage = 1;
 
+    public GameObject swordProjectilePrefab;
+
     private float timer;
 
     void Update()
@@ -39,9 +41,17 @@ public class PlayerAutoAttack : MonoBehaviour
 
         if (nearestEnemy != null)
         {
-            nearestEnemy.TakeDamage(damage);
+            GameObject sword = Instantiate(
+                swordProjectilePrefab,
+                transform.position + Vector3.up,
+                Quaternion.identity
+            );
+
+            SwordProjectile projectile = sword.GetComponent<SwordProjectile>();
+            projectile.SetTarget(nearestEnemy, damage);
         }
     }
+
     public void IncreaseDamage(int amount)
     {
         damage += amount;

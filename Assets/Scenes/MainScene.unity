@@ -1338,6 +1338,7 @@ MonoBehaviour:
   attackRange: 6
   attackInterval: 2
   damage: 2
+  swordProjectilePrefab: {fileID: 7213057015641544177, guid: 64da8da08585a1146a36f9ed3698e9dd, type: 3}
 --- !u!114 &1510883902
 MonoBehaviour:
   m_ObjectHideFlags: 0
