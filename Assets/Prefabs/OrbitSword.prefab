@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6964680586996047471}
   - component: {fileID: 9103610397109541872}
   - component: {fileID: 657501853656472345}
-  - component: {fileID: -1784706280007070943}
+  - component: {fileID: 3878684578928648648}
   m_Layer: 0
-  m_Name: SwordProjectile
+  m_Name: OrbitSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 7213057015641544177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 541.5, y: 158, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.8}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,7 +115,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1784706280007070943
+--- !u!114 &3878684578928648648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +124,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7213057015641544177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef6592fb9035b94bb0f05ef84c25c3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d1f1c3414cbaf70428bf0aee873b6628, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwordProjectile
-  speed: 12
+  m_EditorClassIdentifier: Assembly-CSharp::OrbitSword
+  player: {fileID: 0}
+  orbitRadius: 2
+  orbitSpeed: 180
+  heightOffset: 1.2
+  attackRange: 6
+  flySpeed: 12
   damage: 1
-  lifeTime: 3
+  attackCooldown: 1.5
+  angle: 0

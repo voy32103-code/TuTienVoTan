@@ -22,13 +22,13 @@ public class TechniqueManager : MonoBehaviour
             "Phàm Phẩm"
         );
         CultivationTechnique swordTechnique = new CultivationTechnique(
-        "Ngự Kiếm Thuật",
-        "Triệu hồi phi kiếm tự động công kích yêu thú.",
-        1,
-        10,
-        "Luyện Khí",
-        "Hoàng Phẩm"
-         );
+    "Ngự Kiếm Thuật",
+    "Triệu hồi phi kiếm tự động công kích yêu thú.",
+    1,
+    6,
+    "Luyện Khí",
+    "Hoàng Phẩm"
+);
         CultivationTechnique thunderTechnique = new CultivationTechnique(
     "Dẫn Lôi Thuật",
     "Dẫn thiên lôi công kích yêu thú gần nhất.",
