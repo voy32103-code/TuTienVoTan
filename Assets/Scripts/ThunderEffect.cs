@@ -3,7 +3,7 @@ using UnityEngine;
 public class ThunderEffect : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    public float lifeTime = 0.8f;
+    public float lifeTime = 0.3f;
 
     public void Setup(Vector3 targetPosition)
     {

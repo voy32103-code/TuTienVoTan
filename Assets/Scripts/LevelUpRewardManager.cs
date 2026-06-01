@@ -38,9 +38,8 @@ public class LevelUpRewardManager : MonoBehaviour
         rewardButton2.interactable = true;
         rewardButton3.interactable = true;
 
-        rewardButton1Text.text = "Dẫn Khí Quyết\nTăng hấp thu linh khí";
         CultivationTechnique qiTechnique =
-    techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Dẫn Khí Quyết");
+            techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Dẫn Khí Quyết");
 
         if (qiTechnique != null && qiTechnique.IsMaxLevel())
         {
@@ -50,8 +49,8 @@ public class LevelUpRewardManager : MonoBehaviour
         else
         {
             rewardButton1Text.text = "Dẫn Khí Quyết\nTăng hấp thu linh khí";
-            rewardButton1.interactable = true;
         }
+
         CultivationTechnique swordTechnique =
             techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Ngự Kiếm Thuật");
 
@@ -65,12 +64,33 @@ public class LevelUpRewardManager : MonoBehaviour
             rewardButton2Text.text = "Ngự Kiếm Thuật\nTăng sức mạnh phi kiếm";
         }
 
-        rewardButton3Text.text = "Dẫn Lôi Thuật\nTăng sức mạnh thiên lôi";
+        CultivationTechnique thunderTechnique =
+            techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Dẫn Lôi Thuật");
+
+        if (thunderTechnique != null && thunderTechnique.IsMaxLevel())
+        {
+            rewardButton3Text.text = "Dẫn Lôi Thuật\nĐã viên mãn";
+            rewardButton3.interactable = false;
+        }
+        else
+        {
+            rewardButton3Text.text = "Dẫn Lôi Thuật\nTăng sức mạnh thiên lôi";
+        }
     }
 
     void ChooseReward1()
     {
+        CultivationTechnique qiTechnique =
+        techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Dẫn Khí Quyết");
+
+        if (qiTechnique != null && qiTechnique.IsMaxLevel())
+        {
+            Debug.Log("Dẫn Khí Quyết đã viên mãn, không thể nâng thêm.");
+            return;
+        }
+
         techniqueManager.UpgradeTechnique("Dẫn Khí Quyết");
+
         CloseRewardPanel();
     }
 
@@ -92,7 +112,17 @@ public class LevelUpRewardManager : MonoBehaviour
 
     void ChooseReward3()
     {
+        CultivationTechnique thunderTechnique =
+         techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Dẫn Lôi Thuật");
+
+        if (thunderTechnique != null && thunderTechnique.IsMaxLevel())
+        {
+            Debug.Log("Dẫn Lôi Thuật đã viên mãn, không thể nâng thêm.");
+            return;
+        }
+
         techniqueManager.UpgradeTechnique("Dẫn Lôi Thuật");
+
         CloseRewardPanel();
     }
 
