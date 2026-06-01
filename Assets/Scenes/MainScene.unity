@@ -1309,6 +1309,7 @@ GameObject:
   - component: {fileID: 1510883902}
   - component: {fileID: 1510883903}
   - component: {fileID: 1510883904}
+  - component: {fileID: 1510883905}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1522,6 +1523,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TechniqueManager
   learnedTechniques: []
+--- !u!114 &1510883905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510883894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d729b185e6c644b766aa51bb91b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThunderStrike
+  attackRange: 8
+  baseCooldown: 3
+  baseDamage: 2
+  thunderEffectPrefab: {fileID: 8776527947974209226, guid: 1eac08ecac5aa0c4a898e903c6d19272, type: 3}
+  techniqueManager: {fileID: 1510883904}
 --- !u!1001 &1783666549
 PrefabInstance:
   m_ObjectHideFlags: 0

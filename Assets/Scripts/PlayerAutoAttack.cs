@@ -54,7 +54,7 @@ public class PlayerAutoAttack : MonoBehaviour
             SwordProjectile projectile = sword.GetComponent<SwordProjectile>();
             projectile.SetTarget(nearestEnemy, finalDamage);
 
-            Debug.Log("Ngự Kiếm Thuật Lv" + swordLevel + " gây " + finalDamage + " damage");
+            Debug.Log("Ngự Kiếm Thuật Tầng" + swordLevel + " gây " + finalDamage + " damage");
         }
     }
 

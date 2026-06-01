@@ -28,10 +28,20 @@ public class TechniqueManager : MonoBehaviour
         10,
         "Luyện Khí",
         "Hoàng Phẩm"
-    );
+         );
+        CultivationTechnique thunderTechnique = new CultivationTechnique(
+    "Dẫn Lôi Thuật",
+    "Dẫn thiên lôi công kích yêu thú gần nhất.",
+    1,
+    10,
+    "Luyện Khí",
+    "Huyền Phẩm"
+);
 
+       
         learnedTechniques.Add(qiTechnique);
         learnedTechniques.Add(swordTechnique);
+        learnedTechniques.Add(thunderTechnique);
     }
 
     void Update()

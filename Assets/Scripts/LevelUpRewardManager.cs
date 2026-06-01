@@ -37,7 +37,7 @@ public class LevelUpRewardManager : MonoBehaviour
         Debug.Log("LEVEL UP REWARD!");
         Debug.Log("1. Nâng Dẫn Khí Quyết");
         Debug.Log("2. Nâng Ngự Kiếm Thuật");
-        Debug.Log("3. Tăng tốc chạy");
+        Debug.Log("3. Nâng Dẫn Lôi Thuật");
 
     }
 
@@ -58,9 +58,9 @@ public class LevelUpRewardManager : MonoBehaviour
 
     void ChooseReward3()
     {
-        playerMovement.IncreaseSpeed(0.5f);
+        techniqueManager.UpgradeTechnique("Dẫn Lôi Thuật");
 
         Time.timeScale = 1f;
-        Debug.Log("Đã chọn: Tăng tốc chạy");
+        Debug.Log("Đã chọn: Nâng Dẫn Lôi Thuật");
     }
 }
