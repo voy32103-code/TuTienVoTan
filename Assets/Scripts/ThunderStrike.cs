@@ -5,7 +5,7 @@ public class ThunderStrike : MonoBehaviour
 {
     public float attackRange = 8f;
     public float baseCooldown = 3f;
-
+    public float thunderPunishmentRadius = 3f;
     public GameObject thunderEffectPrefab;
     public TechniqueManager techniqueManager;
 
@@ -39,13 +39,20 @@ public class ThunderStrike : MonoBehaviour
         {
             if (enemy == null) continue;
 
-            int damage = GetThunderDamage(thunderLevel);
+            if (thunderLevel >= 6)
+            {
+                CastThunderPunishment(enemy);
+            }
+            else
+            {
+                int damage = GetThunderDamage(thunderLevel);
 
-            enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage);
 
-            SpawnThunderEffect(enemy.transform.position, thunderLevel);
+                SpawnThunderEffect(enemy.transform.position, thunderLevel);
 
-            Debug.Log("Dẫn Lôi Thuật Lv" + thunderLevel + " đánh " + damage + " damage");
+                Debug.Log("Dẫn Lôi Thuật Tầng " + thunderLevel + " đánh " + damage + " damage");
+            }
         }
     }
 
@@ -105,18 +112,51 @@ public class ThunderStrike : MonoBehaviour
     void SpawnThunderEffect(Vector3 targetPosition, int thunderLevel)
     {
         GameObject effect = Instantiate(
-            thunderEffectPrefab,
-            Vector3.zero,
-            Quaternion.identity
-        );
+       thunderEffectPrefab,
+       Vector3.zero,
+       Quaternion.identity
+   );
 
         ThunderEffect thunderEffect = effect.GetComponent<ThunderEffect>();
-
         thunderEffect.Setup(targetPosition);
 
         if (thunderLevel >= 6)
         {
+            LineRenderer line = effect.GetComponent<LineRenderer>();
+
+            if (line != null)
+            {
+                line.startWidth = 0.6f;
+                line.endWidth = 0.6f;
+            }
+
             effect.transform.localScale = Vector3.one * 2f;
         }
+    }
+    void CastThunderPunishment(EnemyHealth mainTarget)
+    {
+        if (mainTarget == null) return;
+
+        Vector3 centerPosition = mainTarget.transform.position;
+
+        EnemyHealth[] enemies = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None);
+
+        int damage = GetThunderDamage(6);
+
+        foreach (EnemyHealth enemy in enemies)
+        {
+            if (enemy == null) continue;
+
+            float distance = Vector3.Distance(centerPosition, enemy.transform.position);
+
+            if (distance <= thunderPunishmentRadius)
+            {
+                enemy.TakeDamage(damage);
+            }
+        }
+
+        SpawnThunderEffect(centerPosition, 6);
+
+        Debug.Log("LÔI PHẠT giáng xuống! Gây " + damage + " damage diện rộng.");
     }
 }
