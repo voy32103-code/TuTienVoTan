@@ -36,8 +36,9 @@ public class LevelUpRewardManager : MonoBehaviour
 
         Debug.Log("LEVEL UP REWARD!");
         Debug.Log("1. Nâng Dẫn Khí Quyết");
-        Debug.Log("2. Tăng sát thương");
+        Debug.Log("2. Nâng Ngự Kiếm Thuật");
         Debug.Log("3. Tăng tốc chạy");
+
     }
 
     void ChooseReward1()
@@ -49,10 +50,10 @@ public class LevelUpRewardManager : MonoBehaviour
     }
     void ChooseReward2()
     {
-        playerAutoAttack.IncreaseDamage(1);
+        techniqueManager.UpgradeTechnique("Ngự Kiếm Thuật");
 
         Time.timeScale = 1f;
-        Debug.Log("Đã chọn: Tăng sát thương");
+        Debug.Log("Đã chọn: Nâng Ngự Kiếm Thuật");
     }
 
     void ChooseReward3()

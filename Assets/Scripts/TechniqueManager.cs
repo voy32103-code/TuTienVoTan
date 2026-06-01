@@ -21,8 +21,17 @@ public class TechniqueManager : MonoBehaviour
             "Luyện Khí",
             "Phàm Phẩm"
         );
+        CultivationTechnique swordTechnique = new CultivationTechnique(
+        "Ngự Kiếm Thuật",
+        "Triệu hồi phi kiếm tự động công kích yêu thú.",
+        1,
+        10,
+        "Luyện Khí",
+        "Hoàng Phẩm"
+    );
 
         learnedTechniques.Add(qiTechnique);
+        learnedTechniques.Add(swordTechnique);
     }
 
     void Update()
@@ -80,5 +89,17 @@ public class TechniqueManager : MonoBehaviour
         float bonusMultiplier = 1f + ((qiTechnique.level - 1) * 0.1f);
 
         return Mathf.RoundToInt(baseExp * bonusMultiplier);
+    }
+    public int GetTechniqueLevel(string techniqueName)
+    {
+        CultivationTechnique technique =
+            learnedTechniques.Find(t => t.techniqueName == techniqueName);
+
+        if (technique == null)
+        {
+            return 0;
+        }
+
+        return technique.level;
     }
 }

@@ -7,6 +7,7 @@ public class PlayerAutoAttack : MonoBehaviour
     public int damage = 1;
 
     public GameObject swordProjectilePrefab;
+    public TechniqueManager techniqueManager;
 
     private float timer;
 
@@ -41,6 +42,9 @@ public class PlayerAutoAttack : MonoBehaviour
 
         if (nearestEnemy != null)
         {
+            int swordLevel = techniqueManager.GetTechniqueLevel("Ngự Kiếm Thuật");
+            int finalDamage = damage + (swordLevel - 1);
+
             GameObject sword = Instantiate(
                 swordProjectilePrefab,
                 transform.position + Vector3.up,
@@ -48,13 +52,15 @@ public class PlayerAutoAttack : MonoBehaviour
             );
 
             SwordProjectile projectile = sword.GetComponent<SwordProjectile>();
-            projectile.SetTarget(nearestEnemy, damage);
+            projectile.SetTarget(nearestEnemy, finalDamage);
+
+            Debug.Log("Ngự Kiếm Thuật Lv" + swordLevel + " gây " + finalDamage + " damage");
         }
     }
 
     public void IncreaseDamage(int amount)
     {
         damage += amount;
-        Debug.Log("Sát thương hiện tại: " + damage);
+        Debug.Log("Sát thương cơ bản hiện tại: " + damage);
     }
 }
