@@ -1402,9 +1402,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   enemyPrefab: {fileID: 1029711455473818910, guid: 505ef5ad236f9d24281c4a4e186e8928, type: 3}
+  eliteEnemyPrefab: {fileID: 1029711455473818910, guid: a2c822dc699ec4645bb43efc286bdd98, type: 3}
   player: {fileID: 1510883898}
+  playerCultivation: {fileID: 1510883902}
   spawnRadius: 10
   spawnInterval: 2
+  eliteSpawnChance: 2
 --- !u!4 &731813655
 Transform:
   m_ObjectHideFlags: 0
@@ -2377,7 +2380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29da19283ef94204586e3366d6b41335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewEmptyCSharpScript
-  speed: 5
+  speed: 3
 --- !u!143 &1510883900
 CharacterController:
   m_ObjectHideFlags: 0

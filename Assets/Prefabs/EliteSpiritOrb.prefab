@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7213057015641544177
+--- !u!1 &7221479307690861700
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 243909954916587710}
-  - component: {fileID: 6964680586996047471}
-  - component: {fileID: 9103610397109541872}
-  - component: {fileID: 657501853656472345}
-  - component: {fileID: 3878684578928648648}
+  - component: {fileID: 1340128470004308755}
+  - component: {fileID: 7339428433781137469}
+  - component: {fileID: 1374699980744219947}
+  - component: {fileID: 7641699964275452949}
+  - component: {fileID: -4316156590239241052}
   m_Layer: 0
-  m_Name: OrbitSword
+  m_Name: EliteSpiritOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &243909954916587710
+--- !u!4 &1340128470004308755
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213057015641544177}
+  m_GameObject: {fileID: 7221479307690861700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1.7}
+  m_LocalPosition: {x: 4.87, y: 0.96, z: 4.28571}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6964680586996047471
+--- !u!33 &7339428433781137469
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213057015641544177}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9103610397109541872
+  m_GameObject: {fileID: 7221479307690861700}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1374699980744219947
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213057015641544177}
+  m_GameObject: {fileID: 7221479307690861700}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -92,13 +92,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &657501853656472345
-CapsuleCollider:
+--- !u!135 &7641699964275452949
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213057015641544177}
+  m_GameObject: {fileID: 7221479307690861700}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,32 +107,26 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
+  m_Enabled: 1
+  serializedVersion: 3
   m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3878684578928648648
+--- !u!114 &-4316156590239241052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213057015641544177}
+  m_GameObject: {fileID: 7221479307690861700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f1c3414cbaf70428bf0aee873b6628, type: 3}
+  m_Script: {fileID: 11500000, guid: daac355e8a3e6254fbedde49c7b0f8fd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OrbitSword
-  player: {fileID: 0}
-  orbitRadius: 2
-  orbitSpeed: 180
-  heightOffset: 1.2
-  attackRange: 6
-  flySpeed: 12
-  damage: 1
-  attackCooldown: 1.5
-  angle: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SpiritOrb
+  expValue: 15
+  moveSpeed: 5
+  collectDistance: 1
+  baseAbsorbRange: 5
+  boostedAbsorbRange: 10

@@ -39,7 +39,19 @@ public class LevelUpRewardManager : MonoBehaviour
         rewardButton3.interactable = true;
 
         rewardButton1Text.text = "Dẫn Khí Quyết\nTăng hấp thu linh khí";
+        CultivationTechnique qiTechnique =
+    techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Dẫn Khí Quyết");
 
+        if (qiTechnique != null && qiTechnique.IsMaxLevel())
+        {
+            rewardButton1Text.text = "Dẫn Khí Quyết\nĐã viên mãn";
+            rewardButton1.interactable = false;
+        }
+        else
+        {
+            rewardButton1Text.text = "Dẫn Khí Quyết\nTăng hấp thu linh khí";
+            rewardButton1.interactable = true;
+        }
         CultivationTechnique swordTechnique =
             techniqueManager.learnedTechniques.Find(t => t.techniqueName == "Ngự Kiếm Thuật");
 

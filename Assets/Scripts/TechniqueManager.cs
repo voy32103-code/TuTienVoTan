@@ -14,13 +14,13 @@ public class TechniqueManager : MonoBehaviour
     void LearnStartingTechnique()
     {
         CultivationTechnique qiTechnique = new CultivationTechnique(
-            "Dẫn Khí Quyết",
-            "Công pháp cơ bản giúp hấp thu linh khí.",
-            1,
-            10,
-            "Luyện Khí",
-            "Phàm Phẩm"
-        );
+    "Dẫn Khí Quyết",
+    "Công pháp cơ bản giúp hấp thu linh khí.",
+    1,
+    6,
+    "Luyện Khí",
+    "Phàm Phẩm"
+);
         CultivationTechnique swordTechnique = new CultivationTechnique(
     "Ngự Kiếm Thuật",
     "Triệu hồi phi kiếm tự động công kích yêu thú.",
@@ -89,16 +89,45 @@ public class TechniqueManager : MonoBehaviour
     public int CalculateSpiritExp(int baseExp)
     {
         CultivationTechnique qiTechnique =
-            learnedTechniques.Find(t => t.techniqueName == "Dẫn Khí Quyết");
+       learnedTechniques.Find(t => t.techniqueName == "Dẫn Khí Quyết");
 
         if (qiTechnique == null)
         {
             return baseExp;
         }
 
-        float bonusMultiplier = 1f + ((qiTechnique.level - 1) * 0.1f);
+        int level = qiTechnique.level;
 
-        return Mathf.RoundToInt(baseExp * bonusMultiplier);
+        int bonusExp = 0;
+        float multiplier = 1f;
+
+        if (level >= 6)
+        {
+            bonusExp = 60;
+        }
+        else if (level >= 5)
+        {
+            bonusExp = 30;
+            multiplier = 1.3f;
+        }
+        else if (level >= 4)
+        {
+            bonusExp = 30;
+        }
+        else if (level >= 2)
+        {
+            bonusExp = 15;
+        }
+        else if (level >= 1)
+        {
+            bonusExp = 5;
+        }
+
+        int finalExp = Mathf.RoundToInt((baseExp + bonusExp) * multiplier);
+
+        Debug.Log("Dẫn Khí Quyết Lv" + level + " hấp thu: " + finalExp + " exp");
+
+        return finalExp;
     }
     public int GetTechniqueLevel(string techniqueName)
     {

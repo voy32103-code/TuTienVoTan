@@ -26,27 +26,29 @@ public class PlayerCultivation : MonoBehaviour
     public int stage = 1;
 
     public int currentExp = 0;
-    public int requiredExp = 10;
+    public int requiredExp = 100;
 
-    public void AddExp(int amount) 
+    public void AddExp(int amount)
     {
         currentExp += amount;
-        if ( currentExp >= requiredExp)
+
+        if (currentExp >= requiredExp && !isWaitingForBreakthrough)
         {
             LevelUp();
         }
+
         Debug.Log(GetCultivationName() + " | Tu vi: " + currentExp + "/" + requiredExp);
     }
     void LevelUp() 
     {
         currentExp -= requiredExp;
 
-        // Nếu đang tầng 1-8 thì tăng tầng bình thường
+        // Tầng 1 -> tầng 8
         if (stage < 9)
         {
             stage++;
 
-            requiredExp += 10;
+            requiredExp = GetRequiredExpForCurrentStage();
 
             Debug.Log("Đột phá thành công! Hiện tại: " + GetCultivationName());
 
@@ -54,12 +56,12 @@ public class PlayerCultivation : MonoBehaviour
             return;
         }
 
-        // Nếu đang tầng 9 và chưa viên mãn
+        // Tầng 9 -> viên mãn
         if (stage == 9 && !isPerfectStage)
         {
             isPerfectStage = true;
 
-            requiredExp += 20;
+            requiredExp = GetRequiredExpForCurrentStage();
 
             Debug.Log("Đã đạt " + GetCultivationName() + "! Chuẩn bị tiến giai.");
 
@@ -67,7 +69,7 @@ public class PlayerCultivation : MonoBehaviour
             return;
         }
 
-        // Nếu đã viên mãn, đủ tu vi thì bắt đầu tiến giai/quái triều
+        // Viên mãn -> kích hoạt quái triều
         if (isPerfectStage && !isWaitingForBreakthrough)
         {
             isWaitingForBreakthrough = true;
@@ -113,11 +115,38 @@ public class PlayerCultivation : MonoBehaviour
             realmIndex = realms.Length - 1;
         }
 
-        requiredExp += 30;
+        requiredExp = GetRequiredExpForCurrentStage();
 
         Debug.Log("Tiến giai thành công! Hiện tại: " + GetCultivationName());
 
         OnLevelUp?.Invoke();
+    }
+    void Start()
+    {
+        requiredExp = GetRequiredExpForCurrentStage();
+    }
+    int GetRequiredExpForCurrentStage()
+    {
+        // Tầng 1 cần 100
+        if (stage == 1 && !isPerfectStage)
+        {
+            return 100;
+        }
+
+        // Tầng 2 cần 150
+        if (stage == 2 && !isPerfectStage)
+        {
+            return 150;
+        }
+
+        // Tầng 3 trở đi: 175, 200, 225...
+        if (!isPerfectStage)
+        {
+            return 150 + ((stage - 2) * 25);
+        }
+
+        // Viên mãn cần thêm 350 để kích hoạt tiến giai
+        return 350;
     }
 
 
